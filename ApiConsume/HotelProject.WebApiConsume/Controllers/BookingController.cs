@@ -41,7 +41,7 @@ namespace HotelProject.WebApiConsume.Controllers
             _BookingService.UpdateT(Booking);
             return Ok();
         }
-        [HttpPut("[action]")]
+        [HttpGet("[action]/{id}")]
         public IActionResult UpdateReservationStatus(int id)
         {
             _BookingService.TBookingStatusChange(id);
@@ -51,6 +51,12 @@ namespace HotelProject.WebApiConsume.Controllers
         public IActionResult GetBooking(int id)
         {
             var values = _BookingService.GetByIDT(id);
+            return Ok(values);
+        }
+        [HttpGet("[action]")]
+        public IActionResult Last6Booking()
+        {
+            var values = _BookingService.Last6Bookings();
             return Ok(values);
         }
     }

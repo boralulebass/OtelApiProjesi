@@ -10,5 +10,8 @@ namespace HotelProject.BusinessLayer.Abstract
     public interface IBookingService :IGenericService<Booking>
     {
       void  TBookingStatusChange(int id);
+        int TGetBookingCount();
+        List<Booking> Last6Bookings();
+
     }
 }

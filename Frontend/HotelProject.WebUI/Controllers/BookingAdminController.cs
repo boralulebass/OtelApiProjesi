@@ -28,12 +28,12 @@ namespace HotelProject.WebUI.Controllers
         }
         public async Task<IActionResult> ApprovedReservation(int id)
         {
-            //var client = _httpClientFactory.CreateClient();
-            //var responseMessage = await client.PutAsync("https://localhost:7232/api/Booking/UpdateReservationStatus?id="+ id);
-            //if (responseMessage.IsSuccessStatusCode)
-            //{
-            //    return RedirectToAction("Index");
-            //}
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7232/api/Booking/UpdateReservationStatus/" + id);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("Index");
         }
     }

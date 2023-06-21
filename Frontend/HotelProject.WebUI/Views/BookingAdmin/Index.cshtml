@@ -5,6 +5,7 @@
     Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
     int count = 0;
     string status = "";
+    string button = "";
 }
 
 <div class="table-responsive">
@@ -17,8 +18,6 @@
                 <th>Çıkış Tarihi</th>
                 <th>Durum</th>
                 <th></th>
-                <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -30,10 +29,8 @@
                     <td>@item.Name</td>
                     <td>@(((DateTime)item.Checkin).ToString("dd-MMM-yyyy"))</td>
                     <td>@(((DateTime)item.Checkout).ToString("dd-MMM-yyyy"))</td>
-                    <td><span class="badge badge-primary px-2">@if (item.Status == false){ status = "Onay Bekliyor";}else {status = "Onaylandı";} @status</span></td>
-                    <td><a href="/BookingAdmin/ApprovedReservation/@item.BookingID" class="btn btn-outline-primary">Onayla</a></td>
-                    <td><a href="#" class="btn btn-outline-info">Güncelle</a></td>
-                    <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+                    <td><span class="badge badge-primary px-2">@if (item.Status == false){ status = "Onay Bekliyor"; button = "Onayla"; }else {status = "Onaylandı"; button = "İptal Et"; } @status</span></td>
+                    <td><a href="/BookingAdmin/ApprovedReservation/@item.BookingID" class="btn btn-outline-primary">@button </a></td>
                 </tr>
             }
         </tbody>
